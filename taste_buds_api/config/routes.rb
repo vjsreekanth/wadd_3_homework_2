@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes, only: [:index, :show, :create, :destroy] do
         resources :reviews, shallow: :true, only: [:create, :destroy]
-      end  
+      end 
+      resource :session, only: [:create, :destroy]
+      get("/current_user", to: "sessions#get_current_user")
+      resources :users, only: [:create]
+ 
     end
   end
 

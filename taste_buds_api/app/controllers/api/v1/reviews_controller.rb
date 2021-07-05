@@ -1,9 +1,10 @@
 class Api::V1::ReviewsController < Api::ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
     def create
         @recipe = Recipe.find params[:recipe_id]
         review = Review.new review_params
         review.recipe = @recipe
-        # @review.user = User.first
+        review.user = current_user
         if review.save
             render json:{id: review.id}
         else 

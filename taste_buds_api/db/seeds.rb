@@ -5,12 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+PASSWORD = "supersecret"
 
 Review.delete_all
 Recipe.delete_all
 
+User.delete_all()
 
+super_user = User.create(
+  first_name: "Jon",
+  last_name: "Snow",
+  email: "js@winterfell.gov",
+  password: PASSWORD,
+  
+)
+
+10.times do |x|
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: PASSWORD,
+  )
+end
+
+users = User.all
 
 20.times do
     created_at = Faker::Date.backward(365 * 5)
@@ -31,7 +50,7 @@ Recipe.delete_all
       created_at: created_at,
       updated_at: created_at,
     #   # We can use the user instance for the "user" attribute rather than using "user_id"
-    #   user: users.sample,
+      user: users.sample,
     )
     if r.valid?
       # With the writer q.answers=(objects), the answer instances that are being assigned
@@ -39,13 +58,18 @@ Recipe.delete_all
       r.reviews = rand(0..15).times.map do
         Review.new(
           body: Faker::Quote.jack_handey,
-          rating: Faker::Number.between(from: 0, to: 5)
-        #   user: users.sample,
+          rating: Faker::Number.between(from: 1, to: 5),
+          user: users.sample,
         )
       end
+
       
     end
   end
-
+        recipes = Recipe.all
+        reviews = Review.all
+        
+    puts Cowsay.say("Generated #{User.count} users", :ghostbusters)
+    puts Cowsay.say("Sign in with #{super_user.email} and password: #{PASSWORD}", :cow)
     puts Cowsay.say("Generated #{Recipe.count} recipes", :koala)
     puts Cowsay.say("Generated #{Review.count} reviews", :stegosaurus)
