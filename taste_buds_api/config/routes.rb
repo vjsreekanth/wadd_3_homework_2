@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       end 
       resource :session, only: [:create, :destroy]
       get("/current_user", to: "sessions#get_current_user")
-      resources :users, only: [:create]
+      resources :users, only: [:create] do
+        get :current, on: :collection # -> /api/v1/users/current
+      end
+      resources :reviews, only: [:index]
  
     end
   end
