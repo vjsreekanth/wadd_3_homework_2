@@ -3,7 +3,8 @@ import WelcomePage from './components/WelcomePage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import RecipeShowPage from './components/RecipeShowPage';
 import  RecipeIndexPage from './components/RecipeIndexPage'
-import {Session, User} from './requests';
+import {User} from './requests';
+import SignInPage from './components/SignInPage';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -17,15 +18,16 @@ class App extends Component{
 }}
 
 componentDidMount(){
-  Session.create({
-    email: 'js@winterfell.gov',
-    password: 'supersecret'
-  }).then(user => {
-    this.setState((state) => {
-      return {
-        user: user
-      }
-    })
+  this.getCurentUser()
+}
+
+getCurentUser = () => {
+  return User.current().then(user =>{
+    if(user?.id){
+      this.setState(state =>{
+        return {user}
+      })
+    }
   })
 }
 
@@ -35,8 +37,11 @@ componentDidMount(){
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar />
+          <Navbar currentUser={this.state.user} />
           <Switch>
+            <Route exact 
+            path='/sign_in' 
+            render={(routeProps) => <SignInPage {...routeProps} onSignIn={this.getCurentUser}/>}/>
             <Route exact path='/recipes' component={RecipeIndexPage} />
             <Route path='/recipes/:id' component={RecipeShowPage} />
             <Route exact path='/' component={WelcomePage} />
