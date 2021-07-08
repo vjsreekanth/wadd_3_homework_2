@@ -30,14 +30,19 @@ getCurentUser = () => {
     }
   })
 }
+ onSignOut = () =>{
+   this.setState({
+     user: null
+   })
 
+ }
 
   render(){
 
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar currentUser={this.state.user} />
+          <Navbar currentUser={this.state.user} onSignOut={this.onSignOut} />
           <Switch>
             <Route exact 
             path='/sign_in' 
