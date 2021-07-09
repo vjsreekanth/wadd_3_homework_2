@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import {Recipe} from '../requests'
+import {Link} from 'react-router-dom'
 
 
 class  RecipeIndexPage extends Component{
@@ -8,6 +9,7 @@ class  RecipeIndexPage extends Component{
         super(props);
         this.state = {recipes: []}
         this.createRecipe = this.createRecipe.bind(this)
+        this.deleteRecipe = this.deleteRecipe.bind(this)
     }
 
     componentDidMount(){
@@ -36,8 +38,9 @@ class  RecipeIndexPage extends Component{
             })}
     
 
-
-    deleteReceipe(id){
+           
+    deleteRecipe(id){
+        Recipe.destroy(id);
         this.setState((state) => {
             return {
                 recipes: state.recipes.filter(recipe => recipe.id !== id)
@@ -55,11 +58,14 @@ class  RecipeIndexPage extends Component{
                 }}>
                 {this.state.recipes.map(recipe => (
 
-                    <li key={recipe.id}>
-                        <img src={recipe.image_url} alt={recipe.title} /><br />
-                        <a href="#">{recipe.id} - {recipe.title}</a><br />
+                    <li style={{
+                        marginTop: 20,
+                    }} key={recipe.id}>
+                        <Link to={`/recipes/${recipe.id}`}>
+                        <img src={recipe.image_url} alt={recipe.title} /></Link><br />
+                        <p>{recipe.id} - {recipe.title}</p><br />
                         <small>Posted on: {recipe.created_at}</small><br />
-                        <button onClick={() => this.deleteReceipe(recipe.id)}>Delete</button>
+                        <button onClick={() => this.deleteRecipe(recipe.id)}>Delete</button>
                     </li>
                     
 

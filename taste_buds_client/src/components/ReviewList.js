@@ -1,35 +1,29 @@
 import React from 'react';
 import ReviewDetails from './ReviewDetails';
+
 // import reviews from '../data/reviews.js'
 
-const  ReviewList =  ({props, deleteReview}) =>{
-    const reviews = props.reviews
-    
+const ReviewList = (props = {})=> {
+    const { reviews, onReviewDeleteClick = () => {} } = props;
 
-    return(
-        <div>{ reviews? 
-            reviews.map( ({ body, rating, reviewer, created_at, id}) => (
-                
-                    <ReviewDetails 
-                    key={id}
-                    id={id}
-                    body={body}
-                    rating={rating}
-                    reviewer={reviewer}
-                    created_at={created_at.toLocaleString()}
-                    deleteReview = {deleteReview}
-                    
-                    />
-                
-                
-                ))
-                : null
-
-        }
+    return (
         
+        <div>
+            <h3>Previous Reviews</h3>
+          {reviews?reviews.map((review,i) => {
+            return <ReviewDetails
+                key={i}
+                rating={review.rating}
+                id={review.id}
+                body={review.body}
+                reviewerName={review.reviewer?review.reviewer:''}
+                createdAt={review.created_at}
+                onDeleteClick={onReviewDeleteClick}
+              />
+            
+          }):''}
         </div>
-    )
-}
+      )}
 
     
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
+import FormErrors from './FormErrors';
 
-
-const NewRecipeForm = ({createRecipe}) =>{
+const NewRecipeForm = (props) =>{
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -17,7 +17,7 @@ const NewRecipeForm = ({createRecipe}) =>{
             is_sweet: formData.get('is_sweet'),
             is_salty: formData.get('is_salty')
         }
-        createRecipe(params);
+        props.createRecipe(params);
 
     }
     return(
@@ -30,7 +30,7 @@ const NewRecipeForm = ({createRecipe}) =>{
                 name="image_url" 
                 id="image_url" 
                 />
-                
+                  <FormErrors forField="image_url" errors={props.errors}/>
             </div>
             <div>
                 <label htmlFor="title">Title</label>
@@ -39,7 +39,7 @@ const NewRecipeForm = ({createRecipe}) =>{
                 name="title" 
                 id="title" 
                 />
-                
+                  <FormErrors forField="title" errors={props.errors}/>
             </div>
             <div>
                 <label htmlFor="story">Story</label>
@@ -48,7 +48,7 @@ const NewRecipeForm = ({createRecipe}) =>{
                 name="story" 
                 id="story" 
                 />
-                
+               <FormErrors forField="story" errors={props.errors}/>
             </div>
             <div>
                 <label htmlFor="description">Description</label>
@@ -57,7 +57,7 @@ const NewRecipeForm = ({createRecipe}) =>{
                 name="description" 
                 id="description" 
                 />
-                
+                 <FormErrors forField="description" errors={props.errors}/>
             </div>
             <div>
                 <label htmlFor="serving_size">Number of people - serving size(1 - 50)</label>
@@ -66,6 +66,7 @@ const NewRecipeForm = ({createRecipe}) =>{
                 name="serving_size" 
                 id="serving_size" 
                 />
+                 <FormErrors forField="serving_size" errors={props.errors}/>
             </div>
             <div>
                 <label htmlFor="is_spicy">Spicy</label>

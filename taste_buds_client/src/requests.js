@@ -15,16 +15,45 @@ export const Recipe = {
             console.log(res)
             return res.json()})
     },
+    create(params){
+        return fetch(`${BASE_URL}/recipes`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        }).then((res) => res.json());
+    },
+
+    destroy(id){
+        return fetch(`${BASE_URL}/recipes/${id}`, {
+            method: 'DELETE',
+            credentials: 'include',
+        })
+    }
+
 }
 
 export const Review = {
-    index(){
-        return fetch(`${BASE_URL}/reviews`)
-        .then(res => {
-            console.log(res);
-            return res.json();
-        })
+ 
+    create(review_params, id){
+        return fetch(`${BASE_URL}/recipes/${id}/reviews`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(review_params)
+        }).then((res) => res.json());
     },
+
+    destroy(rev_id){
+        return fetch(`${BASE_URL}/reviews/${rev_id}`, {
+            method: 'DELETE',
+            credentials: 'include',
+        })
+    }
 }
 
 export const Session = {

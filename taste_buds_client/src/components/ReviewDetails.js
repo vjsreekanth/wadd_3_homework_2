@@ -1,29 +1,21 @@
 import React from 'react';
+import { StarRating } from "./StarRating";
+import { RecipeShowContext } from "./RecipeShowPage";
+import { useContext } from "react";
 
-const ReviewDetails = ({ body, rating, reviewer, created_at, id, deleteReview }) => {
+const ReviewDetails = (props) => {
+    const deleteReview = useContext(RecipeShowContext)
+    console.log(props)
     return(
         <div>
-            <p
-            style={{
-            fontStyle: 'Roboto',
-            fontSize: '12px'
-            }}
-            >{rating}</p>
-            
-            <p
-            style={{
-            fontStyle: 'Roboto',
-            fontSize: '12px'
-            }}
-            >{body}</p>
-            <div>
-            <small style={{ marginLeft: '20px'}}>Reviewed on  {created_at}</small> -
-            <small>By {reviewer? reviewer : null}</small><br />
-            <button onClick={() => deleteReview(id)}>Delete</button>
-            <br />
-            </div>
-      </div>
-        
+            <h3 className="header">
+                <StarRating max={5} currentNumber={props.rating} />
+            </h3>
+            <p>{props.body}</p>
+            <p>Reviewed by: {props.reviewerName ? props.reviewerName : null}</p>
+            <p>createdAt: {new Date(props.createdAt).toDateString()}</p>{" "}
+            <button onClick={() => deleteReview(props.id)}>Delete</button>
+        </div>
     )
 }
 

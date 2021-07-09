@@ -1,10 +1,10 @@
 class Api::V1::ReviewsController < Api::ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
-  def index
-    recipes = Recipe.order created_at: :desc
-    render json: recipes, each_serializer: RecipeSerializer
-end
+#   def index
+#     recipes = Recipe.order created_at: :desc
+#     render json: recipes, each_serializer: RecipeSerializer
+# end
     def create
         @recipe = Recipe.find params[:recipe_id]
         review = Review.new review_params

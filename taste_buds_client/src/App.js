@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import WelcomePage from './components/WelcomePage';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom';
 import RecipeShowPage from './components/RecipeShowPage';
-import  RecipeIndexPage from './components/RecipeIndexPage'
-import {User} from './requests';
+import RecipeIndexPage from './components/RecipeIndexPage';
+import {Session,User} from './requests';
 import SignInPage from './components/SignInPage';
 import Navbar from './components/Navbar';
+import AuthRoute from './components/AuthRoute';
+import SignUpPage from './components/SignUpPage';
+import RecipeNewPage from './components/RecipeNewPage'
+
+
 import './App.css';
 
 
@@ -30,12 +35,18 @@ getCurentUser = () => {
     }
   })
 }
- onSignOut = () =>{
-   this.setState({
-     user: null
-   })
+ onSignOut = (props) =>{
+   
+  Session.destroy().then((res) => {
+    this.setState((state) => {
+      return { user: null };
+    });
+  });
 
- }
+  
+
+}
+
 
   render(){
 
@@ -48,6 +59,16 @@ getCurentUser = () => {
             path='/sign_in' 
             render={(routeProps) => <SignInPage {...routeProps} onSignIn={this.getCurentUser}/>}/>
             <Route exact path='/recipes' component={RecipeIndexPage} />
+            <Route
+            exact
+            path='/sign_up'
+            render={ (routeProps) => <SignUpPage {...routeProps} onSignUp={this.getCurentUser} />}/>
+            <AuthRoute 
+            isAuthenticated={!!this.state.user}
+            exact
+            path='/recipes/new'
+            component={RecipeNewPage}
+            />
             <Route path='/recipes/:id' component={RecipeShowPage} />
             <Route exact path='/' component={WelcomePage} />
           </Switch>
