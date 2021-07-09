@@ -1,5 +1,6 @@
 import React from 'react'
 import { Session } from '../requests'
+import signin from "./images/signin.jpg";
 
 function SignInPage(props){
   const {onSignIn} = props
@@ -25,20 +26,22 @@ function SignInPage(props){
   };
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" />
-        </div>
-        <input type="submit" value="Sign In" />
-      </form>
-    </main>
+    <main style={{ backgroundImage: `url(${signin})`, height:'100vh'  }}>
+      <div>
+        <h1>Sign In</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <input type="submit" value="Sign In" />
+        </form>
+      </div>
+   </main>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { User } from '../requests';
+import signup from "./images/signup.jpg";
 
 const SignUpPage = (props) => {
     const { onSignUp } = props
@@ -23,7 +24,7 @@ const SignUpPage = (props) => {
         })
     }
     return(
-        <main>
+        <main style={{ backgroundImage: `url(${signup})`, height:'100vh'  }}>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <div>

@@ -3,6 +3,11 @@ import React, {Component} from 'react';
 import {Recipe} from '../requests'
 import {Link} from 'react-router-dom'
 
+import Card from 'react-bootstrap/Card'
+import CardDeck from 'react-bootstrap/CardDeck'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class  RecipeIndexPage extends Component{
     constructor(props){
@@ -52,25 +57,36 @@ class  RecipeIndexPage extends Component{
         return(
         <main>
             <h1>Recipes</h1>
-            <ul style={{
-                    listStyle: 'none',
-                    paddingLeft: 0,
-                }}>
-                {this.state.recipes.map(recipe => (
+            <CardDeck>
+            <Row mx-md-n5>
+                {this.state.recipes.map((recipe,index) => (
 
-                    <li style={{
-                        marginTop: 20,
-                    }} key={recipe.id}>
-                        <Link to={`/recipes/${recipe.id}`}>
-                        <img src={recipe.image_url} alt={recipe.title} /></Link><br />
-                        <p>{recipe.id} - {recipe.title}</p><br />
-                        <small>Posted on: {recipe.created_at}</small><br />
-                        <button onClick={() => this.deleteRecipe(recipe.id)}>Delete</button>
-                    </li>
+                    // <li style={{
+                    //     marginTop: 20,
+                    // }} key={recipe.id}>
+                    //     <Link to={`/recipes/${recipe.id}`}>
+                    //     <img src={recipe.image_url} alt={recipe.title} /></Link><br />
+                    //     <p>{recipe.id} - {recipe.title}</p><br />
+                    //     <small>Posted on: {recipe.created_at}</small><br />
+                    //     <button onClick={() => this.deleteRecipe(recipe.id)}>Delete</button>
+                    // </li>
+            <Col className='mt-5 px-md-5'lg={4} md={6} xs={12}>
+                <Card style={{ width: "auto"}} key={index}>
+                    <Link to={`/recipes/${recipe.id}`}>
+                    <Card.Img variant="top" src={recipe.image_url} alt={recipe.title} /></Link>
+                    <Card.Body>
+                        <Card.Title>{recipe.id} - {recipe.title}</Card.Title>
+                        <Card.Text>
+                        <small className="text-muted">Posted on: {recipe.created_at}</small>
+                        </Card.Text><br />
+                    </Card.Body>
+                    <Button onClick={() => this.deleteRecipe(recipe.id)} variant="primary">Delete</Button><br />
+                </Card>
                     
-
+            </Col>
                 ))}
-            </ul>
+            </Row>
+           </CardDeck>
         </main>
     )}
 }
