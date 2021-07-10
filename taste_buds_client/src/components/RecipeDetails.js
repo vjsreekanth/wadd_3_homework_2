@@ -28,21 +28,21 @@ const RecipeDetails = props => {
           }}
         >{props.description}</p>
         <p>Serving Size {props.serving_size}</p>
-          <div className="levels">
-            <span>Is Spicy: </span>{props.is_spicy === true ? <img src={spicy} alt="spicy" /> : <img src={falsy} alt="falsy" />}
+          <div style={{marginTop: '20px'}}>
+            <span>Is Spicy: </span>{props.is_spicy === true ? <img src={spicy} alt="spicy" /> : <img style={{width: '2rem'}} src={falsy} alt="falsy" />}
           </div>
-          <div className="levels">
-            <span>Is Sweet: </span>{props.is_sweet === true ? <img src={sweet} alt="spicy" /> : <img src={falsy} alt="falsy" />}
+          <div style={{marginTop: '20px'}}>
+            <span>Is Sweet: </span>{props.is_sweet === true ? <img src={sweet} alt="spicy" /> : <img style={{width: '2rem' }} src={falsy} alt="falsy" />}
           </div>
-          <div className="levels">
-          <span>Is Salty: </span>{props.is_salty === true ? <img src={salty} alt="spicy" /> : <img src={falsy} alt="falsy" />}
+          <div style={{marginTop: '20px'}}>
+          <span>Is Salty: </span>{props.is_salty === true ? <img src={salty} alt="spicy" /> : <img style={{width: '2rem',}} src={falsy} alt="falsy" />}
           </div><br />
        
        
         <div>
           <small
           style={{ marginLeft: '20px' }}
-          >Posted on: {new Date(props.created_at).toDateString()} by: {props.author.full_name}</small>
+          >Posted on: {new Date(props.created_at).toDateString()} by: {props.author?.full_name}</small>
         </div>
       </div>
 

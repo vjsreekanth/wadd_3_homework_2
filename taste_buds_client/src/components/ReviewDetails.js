@@ -7,7 +7,7 @@ const ReviewDetails = (props) => {
     const deleteReview = useContext(RecipeShowContext)
     console.log(props)
     return(
-        <div>
+        <div style={{marginTop: "25px"}}>
             <h3 className="header">
                 <StarRating max={5} currentNumber={props.rating} />
             </h3>

@@ -8,7 +8,7 @@ const ReviewList = (props = {})=> {
 
     return (
         
-        <div>
+        <div style={{marginTop: '20px'}}>
             <h3>Previous Reviews</h3>
           {reviews?reviews.map((review,i) => {
             return <ReviewDetails

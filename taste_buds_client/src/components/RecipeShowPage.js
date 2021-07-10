@@ -78,9 +78,9 @@ const RecipeShowPage = props => {
 
           <RecipeDetails  {...recipeShow}/>
         
-          <form onSubmit={handleSubmit}>
+          <form style={{marginTop: '20px', border: "5px solid grey", textAlign: 'center'}}onSubmit={handleSubmit}>
             <h1>Review Your Experience</h1>
-            <div>
+            <div style={{textAlign: "centre"}}>
                 <label htmlFor="rating">Rating(1 - 5): </label>
                 <input 
                 name="rating" 
@@ -88,16 +88,16 @@ const RecipeShowPage = props => {
                 />
                
             </div>
-            <div>
-                <label htmlFor="body">What You Think?</label>
-                <br/>
+            <div style={{textAlign: "centre"}}>
+                <label htmlFor="body">What You Think? : </label>
+              
                 <input 
                 name="body" 
                 id="body" 
                 />
                 
             </div>
-            <div>
+            <div style={{marginBottom: "20px"}}>
                 <input type="submit" value="Review"/>
             </div>
         </form>

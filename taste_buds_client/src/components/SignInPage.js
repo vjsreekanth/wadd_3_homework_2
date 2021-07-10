@@ -30,14 +30,14 @@ function SignInPage(props){
   return (
     <main style={{ backgroundImage: `url(${signin})`, height:'100vh'}}>
       <div className="container">
-        <h1>Sign In</h1>
+        <h1 style={{color: 'white'}}>Sign In</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email">Email</label>
+            <label style={{color: 'white'}}htmlFor="email">Email: </label>
             <input type="email" name="email" id="email" />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label style={{color: 'white'}} htmlFor="password">Password: </label>
             <input type="password" name="password" id="password" />
           </div>
           <input type="submit" value="Sign In" />

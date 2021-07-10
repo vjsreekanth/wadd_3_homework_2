@@ -25,26 +25,26 @@ const SignUpPage = (props) => {
     }
     return(
         <main style={{ backgroundImage: `url(${signup})`, height:'100vh'  }}>
-            <h1>Sign Up</h1>
+            <h1 style={{color: 'white'}}>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="first_name">First Name</label>
+                    <label style={{color: 'white'}}htmlFor="first_name">First Name:</label>
                     <input type="text" name="first_name" id="first_name" />
                 </div> 
                 <div>
-                    <label htmlFor="last_name">Last Name</label>
+                    <label style={{color: 'white'}} htmlFor="last_name">Last Name: </label>
                     <input type="text" name="last_name" id="last_name" />
                 </div> 
                 <div>
-                    <label htmlFor="email">Email</label>
+                    <label style={{color: 'white'}}htmlFor="email">Email: </label>
                     <input type="email" name="email" id="email" />
                 </div> 
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label style={{color: 'white'}}htmlFor="password">Password: </label>
                     <input type="password" name="password" id="password" />
                 </div> 
                 <div>
-                    <label htmlFor="password_confirmation">Password Confirmation</label>
+                    <label style={{color: 'white'}}htmlFor="password_confirmation">Password Confirmation: </label>
                     <input type="password" name="password_confirmation" id="password_confirmation" />
                 </div> 
                 <input type="submit"  value="Sign Up" />               
