@@ -1,5 +1,6 @@
 
 import React from 'react';
+
 import spicy from  './spicy.png';
 import falsy from './falsy.png';
 import salty from './salty.png';
@@ -41,7 +42,7 @@ const RecipeDetails = props => {
         <div>
           <small
           style={{ marginLeft: '20px' }}
-          >Posted on: {props.created_at}</small>
+          >Posted on: {new Date(props.created_at).toDateString()} by: {props.author.full_name}</small>
         </div>
       </div>
 

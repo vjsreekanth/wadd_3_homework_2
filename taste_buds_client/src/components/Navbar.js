@@ -4,6 +4,7 @@ import {Session} from '../requests';
 import { useHistory } from 'react-router-dom';
 
 
+
 const Navbar = ({ currentUser, onSignOut} ) => {
 
     const history = useHistory();
@@ -16,20 +17,20 @@ const Navbar = ({ currentUser, onSignOut} ) => {
         })
     }
     return(
-        <nav>
-            <NavLink to='/'>Home</NavLink> -
-            <NavLink to='/recipes'>Recipes</NavLink> -
+        <nav style={{padding: "10px",display: "flex"}}>
+            <NavLink style={{ marginRight: "20px" }} to='/'>Home</NavLink> 
+            <NavLink style={{ marginRight: "20px" }} to='/recipes'>Recipes</NavLink> 
             {currentUser ? ( 
                 <React.Fragment>
-                    <NavLink to='/recipes/new'>New Recipes</NavLink>
-                    <span>Welcome, {currentUser.full_name}</span>
+                    <NavLink style={{ marginRight: "20px" }} to='/recipes/new'>New Recipes</NavLink>
+                    <span style={{ marginRight: "20px" }} >Welcome, {currentUser.full_name}</span>
                     <button onClick={handleSignOut}>Sign Out</button>
                 </React.Fragment>
                     ) : (
                     <>
-                        <NavLink to='/sign_in'>Sign In</NavLink>
-                        - 
-                        <NavLink to='/sign_up'>Sign Up</NavLink>
+                        <NavLink style={{ marginRight: "20px" }} to='/sign_in'>Sign In</NavLink>
+                        
+                        <NavLink style={{ marginRight: "20px" }} to='/sign_up'>Sign Up</NavLink>
                     </>
                     )}
         </nav>

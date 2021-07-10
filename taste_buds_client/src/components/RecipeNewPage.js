@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NewRecipeForm from './NewRecipeForm'
 import { Recipe } from "../requests";
-import newrecipe from './images/newrecipe.jpg'
+import newrecipe1 from './images/newrecipe1.jpg'
 class RecipeNewPage extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class RecipeNewPage extends Component {
 
   render() {
     return (
-      <main style={{ backgroundImage: `url(${newrecipe})`, width:'100vw'  }}>
+      <main style={{ backgroundImage: `url(${newrecipe1})`,height:'100vh'}}>
         <NewRecipeForm
           createRecipe={this.createRecipe}
           errors={this.state.errors}

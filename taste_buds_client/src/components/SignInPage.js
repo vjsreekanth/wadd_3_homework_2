@@ -1,6 +1,8 @@
+import Color from 'color';
 import React from 'react'
 import { Session } from '../requests'
 import signin from "./images/signin.jpg";
+
 
 function SignInPage(props){
   const {onSignIn} = props
@@ -26,8 +28,8 @@ function SignInPage(props){
   };
 
   return (
-    <main style={{ backgroundImage: `url(${signin})`, height:'100vh'  }}>
-      <div>
+    <main style={{ backgroundImage: `url(${signin})`, height:'100vh'}}>
+      <div className="container">
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
           <div>

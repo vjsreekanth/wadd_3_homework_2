@@ -1,7 +1,7 @@
 class RecipeSerializer < ActiveModel::Serializer
   attributes :id, :image_url, :serving_size, :title, :story, :description, :is_salty, :is_spicy, :is_sweet, :created_at, :updated_at
 
-  belongs_to :user
+  belongs_to :user, key: :author
   has_many :reviews
 
   class UserSerializer < ActiveModel::Serializer

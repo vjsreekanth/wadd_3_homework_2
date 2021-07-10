@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import RecipeDetails  from './RecipeDetails';
 import ReviewList from './ReviewList';
 import {Recipe, Review} from '../requests'
-import NewReviewForm from './NewReviewForm';
 // import recipeData from '../data/recipeData';
 
 export const RecipeShowContext = React.createContext(); 
@@ -78,6 +77,7 @@ const RecipeShowPage = props => {
 
 
           <RecipeDetails  {...recipeShow}/>
+        
           <form onSubmit={handleSubmit}>
             <h1>Review Your Experience</h1>
             <div>
